@@ -10,9 +10,9 @@ jobs:
   attest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - name: Create subject
         run: printf '%s\n' 'attestation-identity-1788663627' > artifact.txt
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be
         with:
           subject-path: artifact.txt
