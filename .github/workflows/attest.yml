@@ -1,0 +1,18 @@
+name: identity-attest
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+jobs:
+  attest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create subject
+        run: printf '%s\n' 'attestation-identity-1788663627' > artifact.txt
+      - uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: artifact.txt
